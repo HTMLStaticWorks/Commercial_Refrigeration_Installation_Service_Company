@@ -1,0 +1,30 @@
+/* Dark Mode Overrides */
+:root[data-theme="dark"] {
+  --color-text-main: #e2e8f0;
+  --color-text-muted: #94a3b8;
+  --color-bg-main: #0f172a;
+  --color-bg-card: #1e293b;
+  --color-bg-alt: #162032;
+  
+  --color-border: #334155;
+  
+  /* Buttons */
+  --color-primary: #3b82f6;
+  --color-primary-dark: #2563eb;
+}
+
+/* Ensure images have correct contrast if needed */
+[data-theme="dark"] img {
+  opacity: 0.9; /* Slight dimming for dark mode comfort */
+}
+
+/* Header in dark mode */
+[data-theme="dark"] .global-header {
+  background-color: var(--color-bg-card);
+  border-bottom: 1px solid var(--color-border);
+}
+
+/* Fix shadow for dark mode */
+[data-theme="dark"] .global-header.scrolled {
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.5);
+}

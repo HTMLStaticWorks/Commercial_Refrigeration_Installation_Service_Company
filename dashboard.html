@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Client Dashboard | Apex Commercial Refrigeration</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: ['class', '[data-theme="dark"]'],
+      theme: {
+        extend: {
+          colors: { primary: { DEFAULT: '#0056b3', light: '#3385ff', dark: '#003d82' }, secondary: '#00bcd4', accent: '#ff5722', dark: { bg: '#0f172a', card: '#1e293b', alt: '#162032', border: '#334155' } },
+          fontFamily: { sans: ['Inter', 'sans-serif'], heading: ['Outfit', 'sans-serif'] }
+        }
+      }
+    }
+  </script>
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/dark-mode.css">
+  <link rel="stylesheet" href="assets/css/rtl.css">
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <style>
+    .dash-sidebar { transition: transform 0.3s ease; }
+    @media (max-width: 1023px) {
+      .dash-sidebar { transform: translateX(-100%); position: fixed; z-index: 40; top: 0; bottom: 0; left: 0; }
+      .dash-sidebar.open { transform: translateX(0); }
+      [dir="rtl"] .dash-sidebar { transform: translateX(100%); left: auto; right: 0; }
+      [dir="rtl"] .dash-sidebar.open { transform: translateX(0); }
+    }
+    .dash-overlay { display: none; }
+    .dash-overlay.active { display: block; }
+    .dash-page { display: none; }
+    .dash-page.active { display: block; }
+    .sidebar-link.active { background-color: rgba(0,86,179,0.1); color: #0056b3; border-left: 3px solid #0056b3; }
+    [data-theme="dark"] .sidebar-link.active { background-color: rgba(59,130,246,0.15); color: #3b82f6; }
+  </style>
+  <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
+</head>
+<body class="bg-slate-100 dark:bg-dark-bg text-slate-900 dark:text-slate-200 antialiased transition-colors duration-300">
+
+  <div class="flex h-screen overflow-hidden">
+    <!-- SIDEBAR -->
+    <aside class="dash-sidebar w-72 bg-white dark:bg-dark-card border-r border-slate-200 dark:border-dark-border flex flex-col shrink-0 lg:relative">
+      <!-- Logo -->
+      <div class="p-6 border-b border-slate-200 dark:border-dark-border">
+        <a href="index.html" class="flex items-center gap-3">
+          <div class="w-10 h-10 bg-primary rounded-lg flex items-center justify-center text-white shrink-0">
+            <i data-lucide="snowflake" class="w-6 h-6"></i>
+          </div>
+          <span class="font-heading font-bold text-2xl text-slate-900 dark:text-white leading-tight">
+            Apex
+          </span>
+        </a>
+      </div>
+      <!-- Nav -->
+      <nav class="flex-1 overflow-y-auto p-4 space-y-1">
+        <a href="#" class="sidebar-link active flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-medium transition-colors" data-page="overview">
+          <i data-lucide="layout-dashboard" class="w-5 h-5"></i> Overview
+        </a>
+        <a href="#" class="sidebar-link flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-medium hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors" data-page="service-requests">
+          <i data-lucide="ticket" class="w-5 h-5"></i> Service Requests
+        </a>
+        <a href="#" class="sidebar-link flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-medium hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors" data-page="schedule">
+          <i data-lucide="calendar-plus" class="w-5 h-5"></i> Schedule Maintenance
+        </a>
+        <a href="#" class="sidebar-link flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-medium hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors" data-page="equipment">
+          <i data-lucide="server" class="w-5 h-5"></i> Equipment
+        </a>
+        <a href="#" class="sidebar-link flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-medium hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors" data-page="temperature">
+          <i data-lucide="thermometer" class="w-5 h-5"></i> Temperature Logs
+        </a>
+        <a href="#" class="sidebar-link flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-medium hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors" data-page="warranty">
+          <i data-lucide="shield-check" class="w-5 h-5"></i> Warranty
+        </a>
+        <a href="#" class="sidebar-link flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-medium hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors" data-page="invoices">
+          <i data-lucide="file-text" class="w-5 h-5"></i> Invoices
+        </a>
+        <a href="#" class="sidebar-link flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-medium hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors" data-page="notifications">
+          <i data-lucide="bell" class="w-5 h-5"></i> Notifications
+          <span class="ml-auto bg-accent text-white text-xs font-bold px-2 py-0.5 rounded-full">3</span>
+        </a>
+        <a href="#" class="sidebar-link flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-medium hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors" data-page="profile">
+          <i data-lucide="user" class="w-5 h-5"></i> Profile
+        </a>
+        <a href="#" class="sidebar-link flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-medium hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors" data-page="settings">
+          <i data-lucide="settings" class="w-5 h-5"></i> Settings
+        </a>
+      </nav>
+      <!-- Logout -->
+      <div class="p-4 border-t border-slate-200 dark:border-dark-border">
+        <a href="index.html" class="flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-medium text-red-500 hover:bg-red-50 dark:hover:bg-red-900/20 transition-colors">
+          <i data-lucide="log-out" class="w-5 h-5"></i> Logout
+        </a>
+      </div>
+    </aside>
+
+    <!-- Overlay for mobile -->
+    <div class="dash-overlay fixed inset-0 bg-black/50 z-30" id="sidebar-overlay"></div>
+
+    <!-- MAIN CONTENT -->
+    <div class="flex-1 flex flex-col overflow-hidden">
+      <!-- Top Bar -->
+      <header class="h-16 bg-white dark:bg-dark-card border-b border-slate-200 dark:border-dark-border flex items-center justify-between px-4 lg:px-8 shrink-0">
+        <div class="flex items-center gap-4">
+          <button id="sidebar-toggle" class="lg:hidden p-2 text-slate-600 dark:text-slate-300 rounded-md" aria-label="Toggle Sidebar">
+            <i data-lucide="menu" class="w-6 h-6"></i>
+          </button>
+          <h2 class="text-lg font-heading font-bold" id="page-title">Dashboard Overview</h2>
+        </div>
+        <div class="flex items-center gap-3">
+          <button id="theme-toggle" class="p-2 w-10 h-10 flex items-center justify-center bg-white dark:bg-dark-card text-slate-600 dark:text-slate-300 rounded-full shadow-sm hover:shadow transition-all border border-slate-200 dark:border-dark-border" aria-label="Toggle Theme">
+            <i data-lucide="moon" class="w-5 h-5 dark:hidden"></i><i data-lucide="sun" class="w-5 h-5 hidden dark:block"></i>
+          </button>
+          <button id="rtl-toggle" class="p-2 w-10 h-10 flex items-center justify-center bg-white dark:bg-dark-card text-slate-600 dark:text-slate-300 rounded-full shadow-sm hover:shadow transition-all border border-slate-200 dark:border-dark-border font-bold text-xs" aria-label="Toggle RTL"><i data-lucide="arrow-left-right" class="w-5 h-5"></i></button>
+          <div class="w-9 h-9 bg-primary text-white rounded-full flex items-center justify-center font-bold text-sm">JD</div>
+        </div>
+      </header>
+
+      <!-- Dashboard Content -->
+      <main class="flex-1 overflow-y-auto p-4 lg:p-8">
+
+        <!-- OVERVIEW PAGE -->
+        <div class="dash-page active" id="page-overview">
+          <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6 mb-8 responsive-grid">
+            <div class="bg-white dark:bg-dark-card rounded-xl p-6 border border-slate-200 dark:border-dark-border">
+              <div class="flex items-center justify-between mb-4">
+                <span class="text-sm text-slate-500 font-medium">Active Tickets</span>
+                <div class="w-10 h-10 bg-primary/10 text-primary rounded-lg flex items-center justify-center"><i data-lucide="ticket" class="w-5 h-5"></i></div>
+              </div>
+              <div class="text-3xl font-heading font-bold">4</div>
+              <div class="text-xs text-green-500 mt-1">2 in progress</div>
+            </div>
+            <div class="bg-white dark:bg-dark-card rounded-xl p-6 border border-slate-200 dark:border-dark-border">
+              <div class="flex items-center justify-between mb-4">
+                <span class="text-sm text-slate-500 font-medium">Upcoming Maintenance</span>
+                <div class="w-10 h-10 bg-secondary/10 text-secondary rounded-lg flex items-center justify-center"><i data-lucide="calendar" class="w-5 h-5"></i></div>
+              </div>
+              <div class="text-3xl font-heading font-bold">2</div>
+              <div class="text-xs text-slate-500 mt-1">Next: Oct 5, 2026</div>
+            </div>
+            <div class="bg-white dark:bg-dark-card rounded-xl p-6 border border-slate-200 dark:border-dark-border">
+              <div class="flex items-center justify-between mb-4">
+                <span class="text-sm text-slate-500 font-medium">Equipment Count</span>
+                <div class="w-10 h-10 bg-primary/10 text-primary rounded-lg flex items-center justify-center"><i data-lucide="server" class="w-5 h-5"></i></div>
+              </div>
+              <div class="text-3xl font-heading font-bold">8</div>
+              <div class="text-xs text-green-500 mt-1">All operating</div>
+            </div>
+            <div class="bg-white dark:bg-dark-card rounded-xl p-6 border border-slate-200 dark:border-dark-border">
+              <div class="flex items-center justify-between mb-4">
+                <span class="text-sm text-slate-500 font-medium">Temp Compliance</span>
+                <div class="w-10 h-10 bg-green-100 text-green-600 rounded-lg flex items-center justify-center"><i data-lucide="check-circle" class="w-5 h-5"></i></div>
+              </div>
+              <div class="text-3xl font-heading font-bold text-green-600">100%</div>
+              <div class="text-xs text-slate-500 mt-1">Last 30 days</div>
+            </div>
+            <div class="bg-white dark:bg-dark-card rounded-xl p-6 border border-slate-200 dark:border-dark-border">
+              <div class="flex items-center justify-between mb-4">
+                <span class="text-sm text-slate-500 font-medium">Outstanding Invoices</span>
+                <div class="w-10 h-10 bg-amber-100 text-amber-600 rounded-lg flex items-center justify-center"><i data-lucide="file-text" class="w-5 h-5"></i></div>
+              </div>
+              <div class="text-3xl font-heading font-bold">$1,247</div>
+              <div class="text-xs text-amber-500 mt-1">1 invoice due</div>
+            </div>
+            <div class="bg-white dark:bg-dark-card rounded-xl p-6 border border-slate-200 dark:border-dark-border">
+              <div class="flex items-center justify-between mb-4">
+                <span class="text-sm text-slate-500 font-medium">Warranty Status</span>
+                <div class="w-10 h-10 bg-primary/10 text-primary rounded-lg flex items-center justify-center"><i data-lucide="shield" class="w-5 h-5"></i></div>
+              </div>
+              <div class="text-3xl font-heading font-bold">6/8</div>
+              <div class="text-xs text-slate-500 mt-1">Units under warranty</div>
+            </div>
+          </div>
+          <!-- Recent Activity -->
+          <div class="bg-white dark:bg-dark-card rounded-xl border border-slate-200 dark:border-dark-border p-6">
+            <h3 class="font-bold text-lg mb-4">Recent Activity</h3>
+            <div class="space-y-4">
+              <div class="flex items-start gap-4 text-sm"><div class="w-2 h-2 bg-green-500 rounded-full mt-2 shrink-0"></div><div><p class="font-medium">Service Ticket #SR-1042 completed</p><p class="text-slate-500 text-xs">Walk-in cooler compressor replaced — Sep 20, 2026</p></div></div>
+              <div class="flex items-start gap-4 text-sm"><div class="w-2 h-2 bg-blue-500 rounded-full mt-2 shrink-0"></div><div><p class="font-medium">Maintenance scheduled for Oct 5</p><p class="text-slate-500 text-xs">Quarterly PM for all units — Sep 18, 2026</p></div></div>
+              <div class="flex items-start gap-4 text-sm"><div class="w-2 h-2 bg-amber-500 rounded-full mt-2 shrink-0"></div><div><p class="font-medium">Invoice #INV-2089 generated</p><p class="text-slate-500 text-xs">$1,247.00 due Oct 15 — Sep 16, 2026</p></div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- SERVICE REQUESTS PAGE -->
+        <div class="dash-page" id="page-service-requests">
+          <div class="bg-white dark:bg-dark-card rounded-xl border border-slate-200 dark:border-dark-border overflow-hidden">
+            <div class="p-6 border-b border-slate-200 dark:border-dark-border flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+              <h3 class="font-bold text-lg">Service Requests</h3>
+              <select id="ticket-filter" class="px-3 py-2 rounded-lg border border-slate-300 dark:border-dark-border bg-white dark:bg-dark-alt text-sm">
+                <option value="all">All Status</option>
+                <option value="open">Open</option>
+                <option value="assigned">Assigned</option>
+                <option value="in-progress">In Progress</option>
+                <option value="completed">Completed</option>
+              </select>
+            </div>
+            <!-- Desktop Table -->
+            <div class="hidden md:block overflow-x-auto">
+              <table class="w-full text-sm text-left">
+                <thead class="bg-slate-50 dark:bg-slate-800 text-xs uppercase text-slate-500">
+                  <tr><th class="p-4">Ticket ID</th><th class="p-4">Equipment</th><th class="p-4">Issue</th><th class="p-4">Priority</th><th class="p-4">Tech</th><th class="p-4">Status</th><th class="p-4">Created</th></tr>
+                </thead>
+                <tbody class="divide-y divide-slate-200 dark:divide-dark-border" id="tickets-table">
+                  <tr data-status="in-progress"><td class="p-4 font-mono font-bold">SR-1044</td><td class="p-4">Walk-In Freezer #2</td><td class="p-4">Evaporator fan noise</td><td class="p-4"><span class="px-2 py-1 bg-amber-100 text-amber-700 rounded-full text-xs font-bold">Medium</span></td><td class="p-4">M. Thorne</td><td class="p-4"><span class="px-2 py-1 bg-blue-100 text-blue-700 rounded-full text-xs font-bold">In Progress</span></td><td class="p-4">Sep 21</td></tr>
+                  <tr data-status="open"><td class="p-4 font-mono font-bold">SR-1043</td><td class="p-4">Display Case A</td><td class="p-4">Temp deviation alert</td><td class="p-4"><span class="px-2 py-1 bg-red-100 text-red-700 rounded-full text-xs font-bold">High</span></td><td class="p-4">Unassigned</td><td class="p-4"><span class="px-2 py-1 bg-yellow-100 text-yellow-700 rounded-full text-xs font-bold">Open</span></td><td class="p-4">Sep 22</td></tr>
+                  <tr data-status="assigned"><td class="p-4 font-mono font-bold">SR-1041</td><td class="p-4">Ice Machine</td><td class="p-4">Low production</td><td class="p-4"><span class="px-2 py-1 bg-amber-100 text-amber-700 rounded-full text-xs font-bold">Medium</span></td><td class="p-4">D. Chen</td><td class="p-4"><span class="px-2 py-1 bg-purple-100 text-purple-700 rounded-full text-xs font-bold">Assigned</span></td><td class="p-4">Sep 19</td></tr>
+                  <tr data-status="completed"><td class="p-4 font-mono font-bold">SR-1042</td><td class="p-4">Walk-In Cooler</td><td class="p-4">Compressor failure</td><td class="p-4"><span class="px-2 py-1 bg-red-100 text-red-700 rounded-full text-xs font-bold">Critical</span></td><td class="p-4">M. Thorne</td><td class="p-4"><span class="px-2 py-1 bg-green-100 text-green-700 rounded-full text-xs font-bold">Completed</span></td><td class="p-4">Sep 18</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <!-- Mobile Cards -->
+            <div class="md:hidden p-4 space-y-4" id="tickets-mobile">
+              <div class="bg-slate-50 dark:bg-dark-alt rounded-xl p-4 border border-slate-200 dark:border-dark-border" data-status="in-progress">
+                <div class="flex justify-between items-start mb-2"><span class="font-mono font-bold text-sm">SR-1044</span><span class="px-2 py-1 bg-blue-100 text-blue-700 rounded-full text-xs font-bold">In Progress</span></div>
+                <p class="font-bold mb-1">Evaporator fan noise</p>
+                <p class="text-xs text-slate-500">Walk-In Freezer #2 · M. Thorne · Sep 21</p>
+              </div>
+              <div class="bg-slate-50 dark:bg-dark-alt rounded-xl p-4 border border-slate-200 dark:border-dark-border" data-status="open">
+                <div class="flex justify-between items-start mb-2"><span class="font-mono font-bold text-sm">SR-1043</span><span class="px-2 py-1 bg-yellow-100 text-yellow-700 rounded-full text-xs font-bold">Open</span></div>
+                <p class="font-bold mb-1">Temp deviation alert</p>
+                <p class="text-xs text-slate-500">Display Case A · Unassigned · Sep 22</p>
+              </div>
+              <div class="bg-slate-50 dark:bg-dark-alt rounded-xl p-4 border border-slate-200 dark:border-dark-border" data-status="completed">
+                <div class="flex justify-between items-start mb-2"><span class="font-mono font-bold text-sm">SR-1042</span><span class="px-2 py-1 bg-green-100 text-green-700 rounded-full text-xs font-bold">Completed</span></div>
+                <p class="font-bold mb-1">Compressor failure</p>
+                <p class="text-xs text-slate-500">Walk-In Cooler · M. Thorne · Sep 18</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- SCHEDULE MAINTENANCE PAGE -->
+        <div class="dash-page" id="page-schedule">
+          <div class="grid lg:grid-cols-2 gap-8">
+            <div class="bg-white dark:bg-dark-card rounded-xl border border-slate-200 dark:border-dark-border p-6">
+              <h3 class="font-bold text-lg mb-6">Schedule New Maintenance</h3>
+              <form id="schedule-form" class="space-y-4" novalidate>
+                <div>
+                  <label class="block text-sm font-bold mb-2">Service Type</label>
+                  <select class="w-full px-4 py-3 rounded-lg border border-slate-300 dark:border-dark-border bg-white dark:bg-dark-alt text-sm">
+                    <option>Preventive Maintenance</option>
+                    <option>Equipment Inspection</option>
+                    <option>Filter Replacement</option>
+                    <option>Coil Cleaning</option>
+                  </select>
+                </div>
+                <div>
+                  <label class="block text-sm font-bold mb-2">Equipment</label>
+                  <select class="w-full px-4 py-3 rounded-lg border border-slate-300 dark:border-dark-border bg-white dark:bg-dark-alt text-sm">
+                    <option>All Equipment</option>
+                    <option>Walk-In Cooler #1</option>
+                    <option>Walk-In Freezer #2</option>
+                    <option>Display Case A</option>
+                    <option>Ice Machine</option>
+                  </select>
+                </div>
+                <div>
+                  <label class="block text-sm font-bold mb-2">Preferred Date</label>
+                  <input type="date" class="w-full px-4 py-3 rounded-lg border border-slate-300 dark:border-dark-border bg-white dark:bg-dark-alt text-sm">
+                </div>
+                <div>
+                  <label class="block text-sm font-bold mb-2">Preferred Time</label>
+                  <select class="w-full px-4 py-3 rounded-lg border border-slate-300 dark:border-dark-border bg-white dark:bg-dark-alt text-sm">
+                    <option>Morning (8am-12pm)</option>
+                    <option>Afternoon (12pm-5pm)</option>
+                  </select>
+                </div>
+                <div>
+                  <label class="block text-sm font-bold mb-2">Notes</label>
+                  <textarea rows="3" class="w-full px-4 py-3 rounded-lg border border-slate-300 dark:border-dark-border bg-white dark:bg-dark-alt text-sm resize-none" placeholder="Any special instructions..."></textarea>
+                </div>
+                <button type="submit" class="btn-primary w-full py-3">Schedule Maintenance</button>
+              </form>
+              <div id="schedule-confirm" class="hidden mt-4 bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 p-4 rounded-lg text-green-700 dark:text-green-300 text-sm font-medium">
+                <i data-lucide="check-circle-2" class="w-5 h-5 inline mr-2"></i> Maintenance scheduled successfully! You'll receive a confirmation email.
+              </div>
+            </div>
+            <div class="bg-white dark:bg-dark-card rounded-xl border border-slate-200 dark:border-dark-border p-6">
+              <h3 class="font-bold text-lg mb-6">Upcoming Schedule</h3>
+              <div class="space-y-4">
+                <div class="bg-slate-50 dark:bg-dark-alt p-4 rounded-lg border border-slate-200 dark:border-dark-border">
+                  <div class="flex justify-between items-start mb-2"><span class="font-bold">Quarterly PM - All Units</span><span class="text-xs bg-blue-100 text-blue-700 px-2 py-1 rounded-full font-bold">Scheduled</span></div>
+                  <p class="text-sm text-slate-500">Oct 5, 2026 · Morning · Tech: M. Thorne</p>
+                </div>
+                <div class="bg-slate-50 dark:bg-dark-alt p-4 rounded-lg border border-slate-200 dark:border-dark-border">
+                  <div class="flex justify-between items-start mb-2"><span class="font-bold">Filter Replacement</span><span class="text-xs bg-blue-100 text-blue-700 px-2 py-1 rounded-full font-bold">Scheduled</span></div>
+                  <p class="text-sm text-slate-500">Oct 12, 2026 · Afternoon · Tech: D. Chen</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- EQUIPMENT PAGE -->
+        <div class="dash-page" id="page-equipment">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="bg-white dark:bg-dark-card rounded-xl border border-slate-200 dark:border-dark-border p-6">
+              <div class="flex justify-between items-start mb-4"><h4 class="font-bold">Walk-In Cooler #1</h4><span class="px-2 py-1 bg-green-100 text-green-700 rounded-full text-xs font-bold">Online</span></div>
+              <div class="grid grid-cols-2 gap-3 text-sm">
+                <div><span class="text-slate-500">Model:</span> Kolpak P7-1010-CT</div>
+                <div><span class="text-slate-500">Serial:</span> KP-78421</div>
+                <div><span class="text-slate-500">Location:</span> Main Kitchen</div>
+                <div><span class="text-slate-500">Temp Range:</span> 34°F - 38°F</div>
+                <div><span class="text-slate-500">Last Service:</span> Aug 15, 2026</div>
+                <div><span class="text-slate-500">Next Service:</span> Oct 5, 2026</div>
+              </div>
+              <div class="mt-4 pt-4 border-t border-slate-200 dark:border-dark-border text-xs"><span class="text-green-500 font-bold">● Warranty Active</span> — Expires Dec 2027</div>
+            </div>
+            <div class="bg-white dark:bg-dark-card rounded-xl border border-slate-200 dark:border-dark-border p-6">
+              <div class="flex justify-between items-start mb-4"><h4 class="font-bold">Walk-In Freezer #2</h4><span class="px-2 py-1 bg-amber-100 text-amber-700 rounded-full text-xs font-bold">Warning</span></div>
+              <div class="grid grid-cols-2 gap-3 text-sm">
+                <div><span class="text-slate-500">Model:</span> Norlake KLF77810-C</div>
+                <div><span class="text-slate-500">Serial:</span> NL-34219</div>
+                <div><span class="text-slate-500">Location:</span> Storage Area B</div>
+                <div><span class="text-slate-500">Temp Range:</span> -10°F to 0°F</div>
+                <div><span class="text-slate-500">Last Service:</span> Sep 20, 2026</div>
+                <div><span class="text-slate-500">Next Service:</span> Oct 5, 2026</div>
+              </div>
+              <div class="mt-4 pt-4 border-t border-slate-200 dark:border-dark-border text-xs"><span class="text-green-500 font-bold">● Warranty Active</span> — Expires Mar 2028</div>
+            </div>
+            <div class="bg-white dark:bg-dark-card rounded-xl border border-slate-200 dark:border-dark-border p-6">
+              <div class="flex justify-between items-start mb-4"><h4 class="font-bold">Display Case A</h4><span class="px-2 py-1 bg-green-100 text-green-700 rounded-full text-xs font-bold">Online</span></div>
+              <div class="grid grid-cols-2 gap-3 text-sm">
+                <div><span class="text-slate-500">Model:</span> Turbo Air TOM-48</div>
+                <div><span class="text-slate-500">Serial:</span> TA-66310</div>
+                <div><span class="text-slate-500">Location:</span> Front Counter</div>
+                <div><span class="text-slate-500">Temp Range:</span> 33°F - 41°F</div>
+                <div><span class="text-slate-500">Last Service:</span> Aug 15, 2026</div>
+                <div><span class="text-slate-500">Next Service:</span> Nov 15, 2026</div>
+              </div>
+              <div class="mt-4 pt-4 border-t border-slate-200 dark:border-dark-border text-xs"><span class="text-slate-400 font-bold">● Warranty Expired</span></div>
+            </div>
+            <div class="bg-white dark:bg-dark-card rounded-xl border border-slate-200 dark:border-dark-border p-6">
+              <div class="flex justify-between items-start mb-4"><h4 class="font-bold">Commercial Ice Machine</h4><span class="px-2 py-1 bg-green-100 text-green-700 rounded-full text-xs font-bold">Online</span></div>
+              <div class="grid grid-cols-2 gap-3 text-sm">
+                <div><span class="text-slate-500">Model:</span> Manitowoc IYT0420A</div>
+                <div><span class="text-slate-500">Serial:</span> MW-11247</div>
+                <div><span class="text-slate-500">Location:</span> Bar Area</div>
+                <div><span class="text-slate-500">Output:</span> 490 lbs/day</div>
+                <div><span class="text-slate-500">Last Service:</span> Jul 30, 2026</div>
+                <div><span class="text-slate-500">Next Service:</span> Oct 30, 2026</div>
+              </div>
+              <div class="mt-4 pt-4 border-t border-slate-200 dark:border-dark-border text-xs"><span class="text-green-500 font-bold">● Warranty Active</span> — Expires Jan 2028</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- TEMPERATURE LOGS PAGE -->
+        <div class="dash-page" id="page-temperature">
+          <div class="bg-white dark:bg-dark-card rounded-xl border border-slate-200 dark:border-dark-border p-6 mb-6">
+            <h3 class="font-bold text-lg mb-4">Temperature History — Walk-In Cooler #1</h3>
+            <div class="flex items-center gap-4 mb-6 text-sm">
+              <span class="text-green-500 font-bold">● Compliant</span>
+              <span class="text-slate-500">Last 24 Hours</span>
+              <span class="text-slate-500">Min: 33.8°F</span>
+              <span class="text-slate-500">Max: 36.2°F</span>
+            </div>
+            <!-- Chart Placeholder -->
+            <div class="bg-slate-50 dark:bg-dark-alt rounded-lg p-4 h-48 relative border border-slate-200 dark:border-dark-border overflow-hidden">
+              <svg class="w-full h-full" preserveAspectRatio="none" viewBox="0 0 200 100">
+                <defs><linearGradient id="grad1" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" style="stop-color:#00bcd4;stop-opacity:0.3" /><stop offset="100%" style="stop-color:#00bcd4;stop-opacity:0" /></linearGradient></defs>
+                <path d="M0,60 L20,55 L40,62 L60,58 L80,65 L100,52 L120,60 L140,55 L160,58 L180,50 L200,54 L200,100 L0,100 Z" fill="url(#grad1)" />
+                <path d="M0,60 L20,55 L40,62 L60,58 L80,65 L100,52 L120,60 L140,55 L160,58 L180,50 L200,54" fill="none" stroke="#00bcd4" stroke-width="2" />
+                <line x1="0" y1="30" x2="200" y2="30" stroke="#ef4444" stroke-width="0.5" stroke-dasharray="4"/>
+                <line x1="0" y1="80" x2="200" y2="80" stroke="#ef4444" stroke-width="0.5" stroke-dasharray="4"/>
+              </svg>
+              <div class="absolute top-2 right-3 text-xs text-red-400">Max Threshold (38°F)</div>
+              <div class="absolute bottom-10 right-3 text-xs text-red-400">Min Threshold (34°F)</div>
+            </div>
+          </div>
+          <div class="bg-white dark:bg-dark-card rounded-xl border border-slate-200 dark:border-dark-border overflow-hidden">
+            <h3 class="font-bold text-lg p-6 pb-4">Daily Readings</h3>
+            <div class="overflow-x-auto">
+              <table class="w-full text-sm text-left">
+                <thead class="bg-slate-50 dark:bg-slate-800 text-xs uppercase text-slate-500"><tr><th class="p-4">Date</th><th class="p-4">Min</th><th class="p-4">Max</th><th class="p-4">Avg</th><th class="p-4">Status</th></tr></thead>
+                <tbody class="divide-y divide-slate-200 dark:divide-dark-border">
+                  <tr><td class="p-4">Sep 23</td><td class="p-4">34.1°F</td><td class="p-4">35.8°F</td><td class="p-4">34.9°F</td><td class="p-4"><span class="text-green-500 font-bold text-xs">✓ Compliant</span></td></tr>
+                  <tr><td class="p-4">Sep 22</td><td class="p-4">33.8°F</td><td class="p-4">36.2°F</td><td class="p-4">35.0°F</td><td class="p-4"><span class="text-green-500 font-bold text-xs">✓ Compliant</span></td></tr>
+                  <tr><td class="p-4">Sep 21</td><td class="p-4">34.0°F</td><td class="p-4">35.5°F</td><td class="p-4">34.7°F</td><td class="p-4"><span class="text-green-500 font-bold text-xs">✓ Compliant</span></td></tr>
+                  <tr><td class="p-4">Sep 20</td><td class="p-4">34.2°F</td><td class="p-4">35.9°F</td><td class="p-4">35.1°F</td><td class="p-4"><span class="text-green-500 font-bold text-xs">✓ Compliant</span></td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- WARRANTY PAGE -->
+        <div class="dash-page" id="page-warranty">
+          <div class="bg-white dark:bg-dark-card rounded-xl border border-slate-200 dark:border-dark-border overflow-hidden">
+            <h3 class="font-bold text-lg p-6 pb-4">Warranty Coverage</h3>
+            <div class="overflow-x-auto">
+              <table class="w-full text-sm text-left">
+                <thead class="bg-slate-50 dark:bg-slate-800 text-xs uppercase text-slate-500"><tr><th class="p-4">Equipment</th><th class="p-4">Provider</th><th class="p-4">Start</th><th class="p-4">Expiry</th><th class="p-4">Coverage</th><th class="p-4">Status</th></tr></thead>
+                <tbody class="divide-y divide-slate-200 dark:divide-dark-border">
+                  <tr><td class="p-4 font-bold">Walk-In Cooler #1</td><td class="p-4">Kolpak Mfg</td><td class="p-4">Dec 2024</td><td class="p-4">Dec 2027</td><td class="p-4">Parts & Labor</td><td class="p-4"><span class="text-green-500 font-bold text-xs">Active</span></td></tr>
+                  <tr><td class="p-4 font-bold">Walk-In Freezer #2</td><td class="p-4">Norlake</td><td class="p-4">Mar 2025</td><td class="p-4">Mar 2028</td><td class="p-4">Parts & Labor</td><td class="p-4"><span class="text-green-500 font-bold text-xs">Active</span></td></tr>
+                  <tr><td class="p-4 font-bold">Display Case A</td><td class="p-4">Turbo Air</td><td class="p-4">Jan 2023</td><td class="p-4">Jan 2026</td><td class="p-4">Parts Only</td><td class="p-4"><span class="text-red-500 font-bold text-xs">Expired</span></td></tr>
+                  <tr><td class="p-4 font-bold">Ice Machine</td><td class="p-4">Manitowoc</td><td class="p-4">Jan 2025</td><td class="p-4">Jan 2028</td><td class="p-4">Parts & Labor</td><td class="p-4"><span class="text-green-500 font-bold text-xs">Active</span></td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- INVOICES PAGE -->
+        <div class="dash-page" id="page-invoices">
+          <div class="bg-white dark:bg-dark-card rounded-xl border border-slate-200 dark:border-dark-border overflow-hidden">
+            <div class="p-6 border-b border-slate-200 dark:border-dark-border flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+              <h3 class="font-bold text-lg">Invoices</h3>
+              <select id="invoice-filter" class="px-3 py-2 rounded-lg border border-slate-300 dark:border-dark-border bg-white dark:bg-dark-alt text-sm">
+                <option value="all">All</option><option value="paid">Paid</option><option value="pending">Pending</option><option value="overdue">Overdue</option>
+              </select>
+            </div>
+            <div class="overflow-x-auto">
+              <table class="w-full text-sm text-left">
+                <thead class="bg-slate-50 dark:bg-slate-800 text-xs uppercase text-slate-500"><tr><th class="p-4">Invoice #</th><th class="p-4">Service</th><th class="p-4">Date</th><th class="p-4">Amount</th><th class="p-4">Due</th><th class="p-4">Status</th><th class="p-4">Actions</th></tr></thead>
+                <tbody class="divide-y divide-slate-200 dark:divide-dark-border" id="invoices-table">
+                  <tr data-status="pending"><td class="p-4 font-mono font-bold">INV-2089</td><td class="p-4">Compressor Replacement</td><td class="p-4">Sep 16</td><td class="p-4 font-bold">$1,247.00</td><td class="p-4">Oct 15</td><td class="p-4"><span class="px-2 py-1 bg-amber-100 text-amber-700 rounded-full text-xs font-bold">Pending</span></td><td class="p-4 flex gap-2"><button class="text-primary hover:underline text-xs font-bold">View</button><button class="text-primary hover:underline text-xs font-bold">Download</button></td></tr>
+                  <tr data-status="paid"><td class="p-4 font-mono font-bold">INV-2088</td><td class="p-4">Quarterly PM - All Units</td><td class="p-4">Aug 20</td><td class="p-4 font-bold">$899.00</td><td class="p-4">Sep 20</td><td class="p-4"><span class="px-2 py-1 bg-green-100 text-green-700 rounded-full text-xs font-bold">Paid</span></td><td class="p-4 flex gap-2"><button class="text-primary hover:underline text-xs font-bold">View</button><button class="text-primary hover:underline text-xs font-bold">Download</button></td></tr>
+                  <tr data-status="paid"><td class="p-4 font-mono font-bold">INV-2087</td><td class="p-4">Emergency Repair - Freezer</td><td class="p-4">Jul 10</td><td class="p-4 font-bold">$475.00</td><td class="p-4">Aug 10</td><td class="p-4"><span class="px-2 py-1 bg-green-100 text-green-700 rounded-full text-xs font-bold">Paid</span></td><td class="p-4 flex gap-2"><button class="text-primary hover:underline text-xs font-bold">View</button><button class="text-primary hover:underline text-xs font-bold">Download</button></td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- NOTIFICATIONS PAGE -->
+        <div class="dash-page" id="page-notifications">
+          <div class="bg-white dark:bg-dark-card rounded-xl border border-slate-200 dark:border-dark-border p-6">
+            <h3 class="font-bold text-lg mb-6">Notifications</h3>
+            <div class="space-y-4">
+              <div class="flex items-start gap-4 p-4 bg-blue-50 dark:bg-blue-900/20 rounded-lg border border-blue-200 dark:border-blue-800">
+                <i data-lucide="info" class="w-5 h-5 text-blue-500 shrink-0 mt-0.5"></i>
+                <div><p class="font-medium text-sm">Maintenance reminder: Quarterly PM scheduled for Oct 5, 2026.</p><p class="text-xs text-slate-500 mt-1">Sep 23, 2026</p></div>
+              </div>
+              <div class="flex items-start gap-4 p-4 bg-amber-50 dark:bg-amber-900/20 rounded-lg border border-amber-200 dark:border-amber-800">
+                <i data-lucide="alert-triangle" class="w-5 h-5 text-amber-500 shrink-0 mt-0.5"></i>
+                <div><p class="font-medium text-sm">Invoice #INV-2089 is due on Oct 15, 2026.</p><p class="text-xs text-slate-500 mt-1">Sep 16, 2026</p></div>
+              </div>
+              <div class="flex items-start gap-4 p-4 bg-green-50 dark:bg-green-900/20 rounded-lg border border-green-200 dark:border-green-800">
+                <i data-lucide="check-circle" class="w-5 h-5 text-green-500 shrink-0 mt-0.5"></i>
+                <div><p class="font-medium text-sm">Service ticket SR-1042 has been completed.</p><p class="text-xs text-slate-500 mt-1">Sep 20, 2026</p></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- PROFILE PAGE -->
+        <div class="dash-page" id="page-profile">
+          <div class="bg-white dark:bg-dark-card rounded-xl border border-slate-200 dark:border-dark-border p-6 max-w-2xl">
+            <h3 class="font-bold text-lg mb-6">Profile Information</h3>
+            <div class="flex items-center gap-6 mb-8">
+              <div class="w-20 h-20 bg-primary text-white rounded-full flex items-center justify-center text-2xl font-bold">JD</div>
+              <div><h4 class="text-xl font-bold">John Doe</h4><p class="text-sm text-slate-500">john.doe@abcrestaurant.com</p><p class="text-xs text-slate-400 mt-1">Client since Jan 2025</p></div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-sm">
+              <div><span class="text-slate-500 block mb-1">Company</span><span class="font-bold">ABC Restaurant Group</span></div>
+              <div><span class="text-slate-500 block mb-1">Phone</span><span class="font-bold">(555) 123-4567</span></div>
+              <div><span class="text-slate-500 block mb-1">Service Plan</span><span class="font-bold">Professional Care</span></div>
+              <div><span class="text-slate-500 block mb-1">Location</span><span class="font-bold">100 Main St, Dallas TX</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- SETTINGS PAGE -->
+        <div class="dash-page" id="page-settings">
+          <div class="bg-white dark:bg-dark-card rounded-xl border border-slate-200 dark:border-dark-border p-6 max-w-2xl">
+            <h3 class="font-bold text-lg mb-6">Settings</h3>
+            <div class="space-y-6">
+              <div class="flex items-center justify-between p-4 bg-slate-50 dark:bg-dark-alt rounded-lg">
+                <div><h4 class="font-bold text-sm">Email Notifications</h4><p class="text-xs text-slate-500">Receive service updates via email</p></div>
+                <label class="relative inline-flex items-center cursor-pointer"><input type="checkbox" checked class="sr-only peer"><div class="w-11 h-6 bg-slate-300 peer-checked:bg-primary rounded-full after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:after:translate-x-full"></div></label>
+              </div>
+              <div class="flex items-center justify-between p-4 bg-slate-50 dark:bg-dark-alt rounded-lg">
+                <div><h4 class="font-bold text-sm">SMS Alerts</h4><p class="text-xs text-slate-500">Temperature deviation SMS alerts</p></div>
+                <label class="relative inline-flex items-center cursor-pointer"><input type="checkbox" checked class="sr-only peer"><div class="w-11 h-6 bg-slate-300 peer-checked:bg-primary rounded-full after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:after:translate-x-full"></div></label>
+              </div>
+              <div class="flex items-center justify-between p-4 bg-slate-50 dark:bg-dark-alt rounded-lg">
+                <div><h4 class="font-bold text-sm">Two-Factor Auth</h4><p class="text-xs text-slate-500">Secure your account with 2FA</p></div>
+                <label class="relative inline-flex items-center cursor-pointer"><input type="checkbox" class="sr-only peer"><div class="w-11 h-6 bg-slate-300 peer-checked:bg-primary rounded-full after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:after:translate-x-full"></div></label>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </main>
+    </div>
+  </div>
+
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/dashboard.js"></script>
+  <script>lucide.createIcons();</script>
+</body>
+</html>
+
+

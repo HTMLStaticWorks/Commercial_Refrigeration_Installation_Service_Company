@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+Sitemap: https://www.apexrefrigeration.com/sitemap.xml
+
+User-agent: *
+Disallow: /dashboard.html
+Disallow: /login.html
+Disallow: /signup.html

@@ -1,0 +1,153 @@
+/* Root CSS Variables for Theme */
+:root {
+  /* Color Palette - Light Mode */
+  --color-primary: #0056b3;      /* Deep Refrigeration Blue */
+  --color-primary-light: #3385ff;
+  --color-primary-dark: #003d82;
+  --color-secondary: #00bcd4;    /* Cyan/Teal accent */
+  --color-accent: #ff5722;       /* Orange for emergency/alerts */
+  
+  --color-text-main: #1a1a24;
+  --color-text-muted: #4a5568;
+  --color-bg-main: #f8fafc;
+  --color-bg-card: #ffffff;
+  --color-bg-alt: #f1f5f9;
+  
+  --color-border: #e2e8f0;
+  
+  /* Fonts */
+  --font-sans: 'Inter', sans-serif;
+  --font-heading: 'Outfit', sans-serif;
+  
+  /* Layout */
+  --header-height: 80px;
+  --border-radius: 0.5rem;
+  --transition-speed: 0.3s;
+}
+
+/* Base Resets & Typography */
+html, body {
+  font-family: var(--font-sans);
+  background-color: var(--color-bg-main);
+  color: var(--color-text-main);
+  margin: 0;
+  padding: 0;
+  line-height: 1.6;
+  scroll-behavior: smooth;
+  transition: background-color var(--transition-speed), color var(--transition-speed);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  margin-top: 0;
+}
+
+a {
+  color: var(--color-primary);
+  text-decoration: none;
+  transition: color var(--transition-speed);
+}
+
+a:hover {
+  color: var(--color-secondary);
+}
+
+/* Global Header */
+.global-header {
+  height: var(--header-height);
+  background-color: var(--color-bg-card);
+  border-bottom: 1px solid var(--color-border);
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  transition: all var(--transition-speed);
+}
+
+.global-header.scrolled {
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+/* Buttons */
+.btn-primary {
+  background-color: var(--color-primary);
+  color: #fff;
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--border-radius);
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color var(--transition-speed), transform 0.2s;
+  cursor: pointer;
+  border: none;
+}
+.btn-primary:hover {
+  background-color: var(--color-primary-dark);
+  color: #fff;
+  transform: translateY(-2px);
+}
+
+.btn-secondary {
+  background-color: transparent;
+  color: var(--color-primary);
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--border-radius);
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition-speed);
+  border: 2px solid var(--color-primary);
+  cursor: pointer;
+}
+.btn-secondary:hover {
+  background-color: var(--color-primary);
+  color: #fff;
+}
+
+.btn-danger {
+  background-color: var(--color-accent);
+  color: #fff;
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--border-radius);
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition-speed);
+  border: none;
+  cursor: pointer;
+}
+.btn-danger:hover {
+  background-color: #e64a19;
+  transform: translateY(-2px);
+}
+
+/* Sections */
+.section {
+  padding: 5rem 0;
+}
+.section-alt {
+  background-color: var(--color-bg-alt);
+}
+
+/* Responsive Utilities */
+@media (max-width: 768px) {
+  .section {
+    padding: 3rem 0;
+  }
+}
+
+
+/* Responsive Grid for 3 cards: 2x2 with 3rd centered on tablet */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .responsive-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+  .responsive-grid > *:nth-child(3):last-child {
+    grid-column: 1 / -1;
+    max-width: calc(50% - 1rem);
+    margin: 0 auto;
+  }
+}

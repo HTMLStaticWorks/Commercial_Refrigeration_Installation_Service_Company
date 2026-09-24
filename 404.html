@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Page Not Found | Apex Commercial Refrigeration</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: ['class', '[data-theme="dark"]'],
+      theme: {
+        extend: {
+          colors: { primary: { DEFAULT: '#0056b3', light: '#3385ff', dark: '#003d82' }, secondary: '#00bcd4', accent: '#ff5722', dark: { bg: '#0f172a', card: '#1e293b', alt: '#162032', border: '#334155' } },
+          fontFamily: { sans: ['Inter', 'sans-serif'], heading: ['Outfit', 'sans-serif'] }
+        }
+      }
+    }
+  </script>
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/dark-mode.css">
+  <link rel="stylesheet" href="assets/css/rtl.css">
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
+</head>
+<body class="bg-slate-50 text-slate-900 dark:bg-dark-bg dark:text-slate-200 antialiased transition-colors duration-300">
+
+  <!-- GLOBAL HEADER -->
+  <header class="global-header fixed top-0 w-full z-50 bg-white dark:bg-dark-card border-b border-slate-200 dark:border-dark-border transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-20">
+        <a href="index.html" class="flex items-center gap-3">
+          <div class="w-10 h-10 bg-primary rounded-lg flex items-center justify-center text-white shrink-0">
+            <i data-lucide="snowflake" class="w-6 h-6"></i>
+          </div>
+          <span class="font-heading font-bold text-2xl text-slate-900 dark:text-white leading-tight">
+            Apex
+          </span>
+        </a>
+        <div class="flex items-center gap-4">
+          <button id="theme-toggle" class="p-2 w-10 h-10 flex items-center justify-center bg-white dark:bg-dark-card text-slate-600 dark:text-slate-300 rounded-full shadow-sm hover:shadow transition-all border border-slate-200 dark:border-dark-border" aria-label="Toggle Theme">
+            <i data-lucide="moon" class="w-5 h-5 dark:hidden"></i><i data-lucide="sun" class="w-5 h-5 hidden dark:block"></i>
+          </button>
+          <a href="index.html" class="btn-primary py-2 px-4 rounded-md font-semibold text-sm">Back Home</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="pt-20 flex items-center justify-center min-h-[80vh] px-4">
+    <div class="text-center max-w-lg">
+      <!-- Animated snowflake -->
+      <div class="w-32 h-32 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-8" style="animation: pulse 2s infinite;">
+        <i data-lucide="snowflake" class="w-16 h-16 text-primary"></i>
+      </div>
+      <style>@keyframes pulse { 0%, 100% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.05); opacity: 0.8; } }</style>
+      
+      <h1 class="text-8xl font-heading font-bold text-primary mb-4">404</h1>
+      <h2 class="text-2xl font-heading font-bold mb-4">System Not Found</h2>
+      <p class="text-slate-500 dark:text-slate-400 mb-8">
+        Looks like this page has gone cold. The content you're looking for doesn't exist or has been moved to a different location.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="index.html" class="btn-primary">
+          <i data-lucide="home" class="w-5 h-5 mr-2"></i> Back to Home
+        </a>
+        <a href="services.html" class="btn-secondary">
+          <i data-lucide="wrench" class="w-5 h-5 mr-2"></i> View Services
+        </a>
+      </div>
+    </div>
+  </main>
+
+  <footer class="bg-slate-950 text-slate-300 py-8 text-center text-sm">
+    <p>&copy; 2026 Apex Commercial Refrigeration. All rights reserved.</p>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+  <script>lucide.createIcons();</script>
+</body>
+</html>
+
+

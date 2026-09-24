@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us | Apex Commercial Refrigeration</title>
+  <meta name="description" content="Contact Apex Refrigeration for commercial refrigeration installation, repair, and maintenance. 24/7 emergency service available.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: ['class', '[data-theme="dark"]'],
+      theme: {
+        extend: {
+          colors: { primary: { DEFAULT: '#0056b3', light: '#3385ff', dark: '#003d82' }, secondary: '#00bcd4', accent: '#ff5722', dark: { bg: '#0f172a', card: '#1e293b', alt: '#162032', border: '#334155' } },
+          fontFamily: { sans: ['Inter', 'sans-serif'], heading: ['Outfit', 'sans-serif'] }
+        }
+      }
+    }
+  </script>
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/dark-mode.css">
+  <link rel="stylesheet" href="assets/css/rtl.css">
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
+</head>
+<body class="bg-slate-50 text-slate-900 dark:bg-dark-bg dark:text-slate-200 antialiased transition-colors duration-300">
+
+  <!-- GLOBAL HEADER -->
+  <header class="global-header fixed top-0 w-full z-50 bg-white dark:bg-dark-card border-b border-slate-200 dark:border-dark-border transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-20">
+        <a href="index.html" class="flex items-center gap-3">
+          <div class="w-10 h-10 bg-primary rounded-lg flex items-center justify-center text-white shrink-0">
+            <i data-lucide="snowflake" class="w-6 h-6"></i>
+          </div>
+          <span class="font-heading font-bold text-2xl text-slate-900 dark:text-white leading-tight">
+            Apex
+          </span>
+        </a>
+        <nav class="hidden xl:flex items-center gap-6">
+          <a href="index.html" class="font-medium hover:text-primary transition-colors">Home</a>
+          <a href="home-2.html" class="font-medium hover:text-primary transition-colors">Home 2</a>
+          <a href="about.html" class="font-medium hover:text-primary transition-colors">About</a>
+          <a href="services.html" class="font-medium hover:text-primary transition-colors">Services</a>
+          <a href="pricing.html" class="font-medium hover:text-primary transition-colors">Pricing</a>
+          <a href="industries.html" class="font-medium hover:text-primary transition-colors">Industries</a>
+          <a href="contact.html" class="font-medium text-primary transition-colors">Contact</a>
+          <a href="dashboard.html" class="font-medium hover:text-primary transition-colors">Dashboard</a>
+        </nav>
+        <div class="hidden xl:flex items-center gap-4">
+          <button id="theme-toggle" class="p-2 w-10 h-10 flex items-center justify-center bg-white dark:bg-dark-card text-slate-600 dark:text-slate-300 rounded-full shadow-sm hover:shadow transition-all border border-slate-200 dark:border-dark-border" aria-label="Toggle Theme">
+            <i data-lucide="moon" class="w-5 h-5 dark:hidden"></i><i data-lucide="sun" class="w-5 h-5 hidden dark:block"></i>
+          </button>
+          <button id="rtl-toggle" class="p-2 w-10 h-10 flex items-center justify-center bg-white dark:bg-dark-card text-slate-600 dark:text-slate-300 rounded-full shadow-sm hover:shadow transition-all border border-slate-200 dark:border-dark-border font-bold text-xs" aria-label="Toggle RTL"><i data-lucide="arrow-left-right" class="w-5 h-5"></i></button>
+          <a href="login.html" class="font-medium hover:text-primary transition-colors px-2">Login</a>
+          <a href="contact.html" class="btn-primary py-2 px-4 rounded-md font-semibold text-sm">Schedule Service</a>
+        </div>
+        <div class="xl:hidden flex items-center gap-2">
+          <button id="mobile-menu-btn" class="p-2 text-slate-600 dark:text-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary" aria-label="Open Menu"><i data-lucide="menu" class="w-6 h-6"></i></button>
+        </div>
+      </div>
+    </div>
+    <div id="mobile-menu" class="hidden xl:hidden bg-white dark:bg-dark-card border-t border-slate-200 dark:border-dark-border absolute w-full shadow-lg">
+      <div class="px-4 pt-2 pb-4 space-y-1">
+        <a href="index.html" class="block px-3 py-2 rounded-md text-base font-medium hover:bg-slate-50 dark:hover:bg-slate-800">Home</a>
+        <a href="home-2.html" class="block px-3 py-2 rounded-md text-base font-medium hover:bg-slate-50 dark:hover:bg-slate-800">Home 2</a>
+        <a href="about.html" class="block px-3 py-2 rounded-md text-base font-medium hover:bg-slate-50 dark:hover:bg-slate-800">About</a>
+        <a href="services.html" class="block px-3 py-2 rounded-md text-base font-medium hover:bg-slate-50 dark:hover:bg-slate-800">Services</a>
+        <a href="pricing.html" class="block px-3 py-2 rounded-md text-base font-medium hover:bg-slate-50 dark:hover:bg-slate-800">Pricing</a>
+        <a href="industries.html" class="block px-3 py-2 rounded-md text-base font-medium hover:bg-slate-50 dark:hover:bg-slate-800">Industries</a>
+        <a href="contact.html" class="block px-3 py-2 rounded-md text-base font-medium text-primary bg-slate-50 dark:bg-slate-800">Contact</a>
+        <a href="dashboard.html" class="block px-3 py-2 rounded-md text-base font-medium hover:bg-slate-50 dark:hover:bg-slate-800">Dashboard</a>
+        <div class="border-t border-slate-200 dark:border-dark-border mt-4 pt-4 flex flex-col gap-3">
+          <a href="login.html" class="block px-3 py-2 rounded-md text-base font-medium hover:bg-slate-50 dark:hover:bg-slate-800">Client Login</a>
+          <a href="contact.html" class="btn-primary w-full text-center py-3">Schedule Service</a>
+        </div>
+            </div>
+      <div class="px-4 py-4 border-t border-slate-200 dark:border-dark-border flex items-center gap-4">
+        <button id="mobile-theme-toggle" class="p-2 w-10 h-10 flex items-center justify-center bg-white dark:bg-dark-card text-slate-600 dark:text-slate-300 rounded-full shadow-sm hover:shadow transition-all border border-slate-200 dark:border-dark-border">
+          <i data-lucide="moon" class="w-5 h-5 dark:hidden"></i>
+          <i data-lucide="sun" class="w-5 h-5 hidden dark:block"></i>
+        </button>
+        <button id="mobile-rtl-toggle" class="p-2 w-10 h-10 flex items-center justify-center bg-white dark:bg-dark-card text-slate-600 dark:text-slate-300 rounded-full shadow-sm hover:shadow transition-all border border-slate-200 dark:border-dark-border font-bold text-xs">
+          <i data-lucide="arrow-left-right" class="w-5 h-5"></i>
+        </button>
+
+      </div>
+
+      </div>
+</header>
+
+  <main class="pt-20">
+    <!-- 1. Contact Hero -->
+    <section class="relative bg-slate-900 py-24 overflow-hidden">
+      <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1470&auto=format&fit=crop" alt="Modern commercial building" class="absolute inset-0 w-full h-full object-cover opacity-20">
+      <div class="absolute inset-0 bg-gradient-to-r from-slate-900 to-transparent"></div>
+      <div class="max-w-7xl mx-auto px-4 relative z-10 text-center" data-aos="fade-up">
+        <h1 class="text-4xl md:text-6xl font-heading font-bold text-white mb-6">Get in Touch</h1>
+        <p class="text-lg text-slate-300 max-w-xl mx-auto">Request a service call, schedule maintenance, or discuss a new installation project with our engineering team.</p>
+      </div>
+    </section>
+
+    <!-- 2. Service Request Form -->
+    <section class="section bg-white dark:bg-dark-bg">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid lg:grid-cols-5 gap-12">
+          <!-- Form -->
+          <div class="lg:col-span-3" data-aos="fade-right">
+            <h2 class="text-2xl font-heading font-bold mb-6">Service Request Form</h2>
+            <form id="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST" novalidate class="space-y-6">
+              <div class="grid md:grid-cols-2 gap-6">
+                <div>
+                  <label for="fullName" class="block text-sm font-bold mb-2">Full Name <span class="text-red-500">*</span></label>
+                  <input type="text" id="fullName" name="fullName" required class="w-full px-4 py-3 rounded-lg border border-slate-300 dark:border-dark-border bg-white dark:bg-dark-card focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-colors" placeholder="John Smith">
+                  <p class="text-red-500 text-xs mt-1 hidden" id="fullName-error">Full name is required.</p>
+                </div>
+                <div>
+                  <label for="companyName" class="block text-sm font-bold mb-2">Company Name</label>
+                  <input type="text" id="companyName" name="companyName" class="w-full px-4 py-3 rounded-lg border border-slate-300 dark:border-dark-border bg-white dark:bg-dark-card focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-colors" placeholder="ABC Restaurant">
+                </div>
+              </div>
+              <div class="grid md:grid-cols-2 gap-6">
+                <div>
+                  <label for="email" class="block text-sm font-bold mb-2">Email <span class="text-red-500">*</span></label>
+                  <input type="email" id="email" name="email" required class="w-full px-4 py-3 rounded-lg border border-slate-300 dark:border-dark-border bg-white dark:bg-dark-card focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-colors" placeholder="john@example.com">
+                  <p class="text-red-500 text-xs mt-1 hidden" id="email-error">Valid email is required.</p>
+                </div>
+                <div>
+                  <label for="phone" class="block text-sm font-bold mb-2">Phone <span class="text-red-500">*</span></label>
+                  <input type="tel" id="phone" name="phone" required class="w-full px-4 py-3 rounded-lg border border-slate-300 dark:border-dark-border bg-white dark:bg-dark-card focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-colors" placeholder="(555) 123-4567">
+                  <p class="text-red-500 text-xs mt-1 hidden" id="phone-error">Valid phone number is required.</p>
+                </div>
+              </div>
+              <div class="grid md:grid-cols-2 gap-6">
+                <div>
+                  <label for="serviceType" class="block text-sm font-bold mb-2">Service Type</label>
+                  <select id="serviceType" name="serviceType" class="w-full px-4 py-3 rounded-lg border border-slate-300 dark:border-dark-border bg-white dark:bg-dark-card focus:ring-2 focus:ring-primary outline-none transition-colors">
+                    <option value="">Select a service</option>
+                    <option value="installation">New Installation</option>
+                    <option value="repair">Repair</option>
+                    <option value="maintenance">Preventive Maintenance</option>
+                    <option value="monitoring">Temperature Monitoring</option>
+                    <option value="emergency">Emergency Service</option>
+                    <option value="inspection">Equipment Inspection</option>
+                  </select>
+                </div>
+                <div>
+                  <label for="equipmentType" class="block text-sm font-bold mb-2">Equipment Type</label>
+                  <select id="equipmentType" name="equipmentType" class="w-full px-4 py-3 rounded-lg border border-slate-300 dark:border-dark-border bg-white dark:bg-dark-card focus:ring-2 focus:ring-primary outline-none transition-colors">
+                    <option value="">Select equipment</option>
+                    <option value="walk-in-cooler">Walk-In Cooler</option>
+                    <option value="walk-in-freezer">Walk-In Freezer</option>
+                    <option value="reach-in">Reach-In Refrigerator</option>
+                    <option value="display-case">Display Case</option>
+                    <option value="ice-machine">Ice Machine</option>
+                    <option value="other">Other</option>
+                  </select>
+                </div>
+              </div>
+              <div class="grid md:grid-cols-2 gap-6">
+                <div>
+                  <label for="preferredDate" class="block text-sm font-bold mb-2">Preferred Date</label>
+                  <input type="date" id="preferredDate" name="preferredDate" class="w-full px-4 py-3 rounded-lg border border-slate-300 dark:border-dark-border bg-white dark:bg-dark-card focus:ring-2 focus:ring-primary outline-none transition-colors">
+                </div>
+                <div>
+                  <label for="preferredTime" class="block text-sm font-bold mb-2">Preferred Time</label>
+                  <select id="preferredTime" name="preferredTime" class="w-full px-4 py-3 rounded-lg border border-slate-300 dark:border-dark-border bg-white dark:bg-dark-card focus:ring-2 focus:ring-primary outline-none transition-colors">
+                    <option value="">Select time</option>
+                    <option value="morning">Morning (8am - 12pm)</option>
+                    <option value="afternoon">Afternoon (12pm - 5pm)</option>
+                    <option value="evening">Evening (5pm - 9pm)</option>
+                    <option value="emergency">Emergency - ASAP</option>
+                  </select>
+                </div>
+              </div>
+              <div>
+                <label for="message" class="block text-sm font-bold mb-2">Message</label>
+                <textarea id="message" name="message" rows="4" class="w-full px-4 py-3 rounded-lg border border-slate-300 dark:border-dark-border bg-white dark:bg-dark-card focus:ring-2 focus:ring-primary outline-none transition-colors resize-none" placeholder="Describe the issue or project details..."></textarea>
+              </div>
+              <div id="form-success" class="hidden bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 text-green-700 dark:text-green-300 p-4 rounded-lg text-sm font-medium">
+                <i data-lucide="check-circle-2" class="w-5 h-5 inline mr-2"></i> Your request has been submitted. We'll contact you within 1 business hour.
+              </div>
+              <button type="submit" class="btn-primary w-full md:w-auto px-8 py-3 text-base">
+                Submit Service Request
+                <i data-lucide="send" class="w-5 h-5 ml-2"></i>
+              </button>
+            </form>
+          </div>
+
+          <!-- 3. Contact Information -->
+          <div class="lg:col-span-2 space-y-6" data-aos="fade-left">
+            <h2 class="text-2xl font-heading font-bold mb-6">Contact Details</h2>
+            <div class="bg-slate-50 dark:bg-dark-card border border-slate-200 dark:border-dark-border rounded-xl p-6">
+              <div class="flex items-start gap-4 mb-6">
+                <div class="w-10 h-10 bg-primary rounded-lg flex items-center justify-center text-white shrink-0">
+            <i data-lucide="snowflake" class="w-6 h-6"></i>
+          </div>
+          <span class="font-heading font-bold text-2xl text-slate-900 dark:text-white leading-tight">
+            Apex
+          </span>
+          </a>
+          <p class="text-sm text-slate-600 dark:text-slate-400 mb-6">Industry-leading commercial refrigeration installation, service, and temperature monitoring solutions.</p>
+        </div>
+        <div>
+          <h4 class="text-slate-900 dark:text-white font-bold mb-6 uppercase text-sm tracking-wider">Quick Links</h4>
+          <ul class="space-y-3 text-sm">
+            <li><a href="about.html" class="hover:text-secondary transition-colors">About</a></li>
+            <li><a href="services.html" class="hover:text-secondary transition-colors">Services</a></li>
+            <li><a href="pricing.html" class="hover:text-secondary transition-colors">Plans</a></li>
+            <li><a href="industries.html" class="hover:text-secondary transition-colors">Industries</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="text-slate-900 dark:text-white font-bold mb-6 uppercase text-sm tracking-wider">Services</h4>
+          <ul class="space-y-3 text-sm">
+            <li><a href="services.html" class="hover:text-secondary transition-colors">Installation</a></li>
+            <li><a href="services.html" class="hover:text-secondary transition-colors">Emergency Repair</a></li>
+            <li><a href="services.html" class="hover:text-secondary transition-colors">Maintenance</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="text-slate-900 dark:text-white font-bold mb-6 uppercase text-sm tracking-wider">Contact</h4>
+          <ul class="space-y-4 text-sm">
+            <li class="flex items-center gap-3"><i data-lucide="phone" class="w-5 h-5 text-primary shrink-0"></i><a href="tel:1-800-555-0199" class="hover:text-secondary">(800) 555-0199</a></li>
+            <li class="flex items-center gap-3"><i data-lucide="mail" class="w-5 h-5 text-primary shrink-0"></i><a href="mailto:service@apexrefrigeration.com" class="hover:text-secondary">service@apexrefrigeration.com</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="border-t border-slate-200 dark:border-slate-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-slate-500">
+        <p>&copy; 2026 Apex Commercial Refrigeration. All rights reserved.</p>
+        
+      </div>
+    </div>
+    <!-- Back to Top -->
+    <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="absolute bottom-6 right-4 md:right-8 p-3 bg-slate-200 dark:bg-slate-800 text-slate-900 dark:text-white rounded-full hover:bg-primary hover:text-white hover:-translate-y-1 transition-all duration-300" aria-label="Back to top">
+      <i data-lucide="arrow-up" class="w-5 h-5"></i>
+    </button>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    lucide.createIcons();
+    
+    // Contact Form Validation
+    const form = document.getElementById('contact-form');
+    if (form) {
+      form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        let valid = true;
+        
+        const fullName = document.getElementById('fullName');
+        const email = document.getElementById('email');
+        const phone = document.getElementById('phone');
+        
+        // Reset errors
+        document.querySelectorAll('[id$="-error"]').forEach(el => el.classList.add('hidden'));
+        
+        if (!fullName.value.trim()) {
+          document.getElementById('fullName-error').classList.remove('hidden');
+          valid = false;
+        }
+        if (!email.value.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value)) {
+          document.getElementById('email-error').classList.remove('hidden');
+          valid = false;
+        }
+        if (!phone.value.trim() || !/^[\d\s\-\(\)\+]{7,}$/.test(phone.value)) {
+          document.getElementById('phone-error').classList.remove('hidden');
+          valid = false;
+        }
+        
+        if (valid) {
+          document.getElementById('form-success').classList.remove('hidden');
+          form.reset();
+          lucide.createIcons();
+        }
+      });
+    }
+  </script>
+</body>
+</html>
+
+

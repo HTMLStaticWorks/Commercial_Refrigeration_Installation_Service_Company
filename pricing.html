@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pricing & Plans | Apex Commercial Refrigeration</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: ['class', '[data-theme="dark"]'],
+      theme: {
+        extend: {
+          colors: { primary: { DEFAULT: '#0056b3' }, secondary: '#00bcd4', accent: '#ff5722', dark: { bg: '#0f172a', card: '#1e293b', alt: '#162032', border: '#334155' } }
+        }
+      }
+    }
+  </script>
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/dark-mode.css">
+  <link rel="stylesheet" href="assets/css/rtl.css">
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
+</head>
+<body class="bg-slate-50 text-slate-900 dark:bg-dark-bg dark:text-slate-200 antialiased">
+  <!-- 1. Pricing Hero -->
+  <header class="global-header fixed top-0 w-full z-50 bg-white dark:bg-dark-card border-b border-slate-200 dark:border-dark-border transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-20">
+        <a href="index.html" class="flex items-center gap-3">
+          <div class="w-10 h-10 bg-primary rounded-lg flex items-center justify-center text-white shrink-0">
+            <i data-lucide="snowflake" class="w-6 h-6"></i>
+          </div>
+          <span class="font-heading font-bold text-2xl text-slate-900 dark:text-white leading-tight">
+            Apex
+          </span>
+        </a>
+        <nav class="hidden xl:flex items-center gap-6">
+          <a href="index.html" class="font-medium hover:text-primary transition-colors">Home</a>
+          <a href="home-2.html" class="font-medium hover:text-primary transition-colors">Home 2</a>
+          <a href="about.html" class="font-medium hover:text-primary transition-colors">About</a>
+          <a href="services.html" class="font-medium hover:text-primary transition-colors">Services</a>
+          <a href="pricing.html" class="font-medium text-primary transition-colors">Pricing</a>
+          <a href="industries.html" class="font-medium hover:text-primary transition-colors">Industries</a>
+          <a href="contact.html" class="font-medium hover:text-primary transition-colors">Contact</a>
+          <a href="dashboard.html" class="font-medium hover:text-primary transition-colors">Dashboard</a>
+        </nav>
+        <div class="hidden xl:flex items-center gap-4">
+          <button id="theme-toggle" class="p-2 w-10 h-10 flex items-center justify-center bg-white dark:bg-dark-card text-slate-600 dark:text-slate-300 rounded-full shadow-sm hover:shadow transition-all border border-slate-200 dark:border-dark-border" aria-label="Toggle Theme">
+            <i data-lucide="moon" class="w-5 h-5 dark:hidden"></i><i data-lucide="sun" class="w-5 h-5 hidden dark:block"></i>
+          </button>
+          <button id="rtl-toggle" class="p-2 w-10 h-10 flex items-center justify-center bg-white dark:bg-dark-card text-slate-600 dark:text-slate-300 rounded-full shadow-sm hover:shadow transition-all border border-slate-200 dark:border-dark-border font-bold text-xs" aria-label="Toggle RTL"><i data-lucide="arrow-left-right" class="w-5 h-5"></i></button>
+          <a href="login.html" class="font-medium hover:text-primary transition-colors px-2">Login</a>
+          <a href="contact.html" class="btn-primary py-2 px-4 rounded-md font-semibold text-sm">Schedule Service</a>
+        </div>
+        <div class="xl:hidden flex items-center gap-2">
+          <button id="mobile-menu-btn" class="p-2 text-slate-600 dark:text-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary" aria-label="Open Menu"><i data-lucide="menu" class="w-6 h-6"></i></button>
+        </div>
+      </div>
+    </div>
+    <div id="mobile-menu" class="hidden xl:hidden bg-white dark:bg-dark-card border-t border-slate-200 dark:border-dark-border absolute w-full shadow-lg">
+      <div class="px-4 pt-2 pb-4 space-y-1">
+        <a href="index.html" class="block px-3 py-2 rounded-md text-base font-medium hover:bg-slate-50 dark:hover:bg-slate-800">Home</a>
+        <a href="home-2.html" class="block px-3 py-2 rounded-md text-base font-medium hover:bg-slate-50 dark:hover:bg-slate-800">Home 2</a>
+        <a href="about.html" class="block px-3 py-2 rounded-md text-base font-medium hover:bg-slate-50 dark:hover:bg-slate-800">About</a>
+        <a href="services.html" class="block px-3 py-2 rounded-md text-base font-medium hover:bg-slate-50 dark:hover:bg-slate-800">Services</a>
+        <a href="pricing.html" class="block px-3 py-2 rounded-md text-base font-medium text-primary bg-slate-50 dark:bg-slate-800">Pricing</a>
+        <a href="industries.html" class="block px-3 py-2 rounded-md text-base font-medium hover:bg-slate-50 dark:hover:bg-slate-800">Industries</a>
+        <a href="contact.html" class="block px-3 py-2 rounded-md text-base font-medium hover:bg-slate-50 dark:hover:bg-slate-800">Contact</a>
+        <a href="dashboard.html" class="block px-3 py-2 rounded-md text-base font-medium hover:bg-slate-50 dark:hover:bg-slate-800">Dashboard</a>
+        <div class="border-t border-slate-200 dark:border-dark-border mt-4 pt-4 flex flex-col gap-3">
+          <a href="login.html" class="block px-3 py-2 rounded-md text-base font-medium hover:bg-slate-50 dark:hover:bg-slate-800">Client Login</a>
+          <a href="contact.html" class="btn-primary w-full text-center py-3">Schedule Service</a>
+        </div>
+            </div>
+      <div class="px-4 py-4 border-t border-slate-200 dark:border-dark-border flex items-center gap-4">
+        <button id="mobile-theme-toggle" class="p-2 w-10 h-10 flex items-center justify-center bg-white dark:bg-dark-card text-slate-600 dark:text-slate-300 rounded-full shadow-sm hover:shadow transition-all border border-slate-200 dark:border-dark-border">
+          <i data-lucide="moon" class="w-5 h-5 dark:hidden"></i>
+          <i data-lucide="sun" class="w-5 h-5 hidden dark:block"></i>
+        </button>
+        <button id="mobile-rtl-toggle" class="p-2 w-10 h-10 flex items-center justify-center bg-white dark:bg-dark-card text-slate-600 dark:text-slate-300 rounded-full shadow-sm hover:shadow transition-all border border-slate-200 dark:border-dark-border font-bold text-xs">
+          <i data-lucide="arrow-left-right" class="w-5 h-5"></i>
+        </button>
+
+      </div>
+
+      </div>
+</header>
+
+  <main class="pt-20">
+    <section class="relative bg-slate-900 py-24 overflow-hidden text-center text-white">
+      <h1 class="text-4xl md:text-5xl font-heading font-bold mb-4" data-aos="fade-up">Transparent, Enterprise-Grade Pricing</h1>
+      <p class="text-slate-400 max-w-2xl mx-auto" data-aos="fade-up" data-aos-delay="100">Predictable maintenance plans and clear repair rates for commercial cooling infrastructure.</p>
+    </section>
+
+    <!-- 2. Maintenance Plans -->
+    <section class="section bg-slate-50 dark:bg-dark-bg">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid md:grid-cols-3 gap-8 responsive-grid">
+          
+          <div class="bg-white dark:bg-dark-card border border-slate-200 dark:border-dark-border rounded-2xl p-8" data-aos="fade-up">
+            <h3 class="text-2xl font-bold mb-2">Essential Care</h3>
+            <p class="text-sm text-slate-500 mb-6">For small commercial systems.</p>
+            <div class="text-4xl font-bold mb-6">$149<span class="text-sm text-slate-500 font-normal">/mo per unit</span></div>
+            <ul class="space-y-3 text-sm mb-8">
+              <li class="flex gap-2"><i data-lucide="check" class="text-green-500 w-5 h-5"></i> Quarterly Inspection</li>
+              <li class="flex gap-2"><i data-lucide="check" class="text-green-500 w-5 h-5"></i> Basic Temperature Checks</li>
+              <li class="flex gap-2"><i data-lucide="x" class="text-slate-300 w-5 h-5"></i> No 24/7 Monitoring</li>
+            </ul>
+            <button class="btn-secondary w-full">Select Plan</button>
+          </div>
+
+          <div class="bg-primary text-white border border-primary rounded-2xl p-8 relative transform md:-translate-y-4 shadow-xl" data-aos="fade-up" data-aos-delay="100">
+            <div class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-secondary text-white px-3 py-1 rounded-full text-xs font-bold">MOST POPULAR</div>
+            <h3 class="text-2xl font-bold mb-2">Professional Care</h3>
+            <p class="text-blue-200 text-sm mb-6">For restaurants and medium facilities.</p>
+            <div class="text-4xl font-bold mb-6">$299<span class="text-sm text-blue-200 font-normal">/mo per unit</span></div>
+            <ul class="space-y-3 text-sm mb-8">
+              <li class="flex gap-2"><i data-lucide="check" class="text-secondary w-5 h-5"></i> Monthly Inspection</li>
+              <li class="flex gap-2"><i data-lucide="check" class="text-secondary w-5 h-5"></i> 24/7 Temperature Logging</li>
+              <li class="flex gap-2"><i data-lucide="check" class="text-secondary w-5 h-5"></i> Priority Dispatch</li>
+            </ul>
+            <button class="btn-primary bg-white text-primary hover:bg-slate-100 w-full">Select Plan</button>
+          </div>
+
+          <div class="bg-white dark:bg-dark-card border border-slate-200 dark:border-dark-border rounded-2xl p-8" data-aos="fade-up" data-aos-delay="200">
+            <h3 class="text-2xl font-bold mb-2">Enterprise Care</h3>
+            <p class="text-sm text-slate-500 mb-6">For large facilities & multi-equipment.</p>
+            <div class="text-4xl font-bold mb-6">Custom</div>
+            <ul class="space-y-3 text-sm mb-8">
+              <li class="flex gap-2"><i data-lucide="check" class="text-green-500 w-5 h-5"></i> Weekly Inspection</li>
+              <li class="flex gap-2"><i data-lucide="check" class="text-green-500 w-5 h-5"></i> Full HACCP Compliance</li>
+              <li class="flex gap-2"><i data-lucide="check" class="text-green-500 w-5 h-5"></i> Dedicated Tech Team</li>
+            </ul>
+            <button class="btn-secondary w-full">Contact Sales</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. Repair & Service Pricing -->
+    <section class="section bg-white dark:bg-dark-card">
+      <div class="max-w-4xl mx-auto px-4" data-aos="fade-up">
+        <h2 class="text-3xl font-bold text-center mb-8">Standard Service Rates</h2>
+        <div class="border border-slate-200 dark:border-dark-border rounded-xl overflow-hidden">
+          <table class="w-full text-left text-sm">
+            <thead class="bg-slate-50 dark:bg-slate-800">
+              <tr><th class="p-4 border-b">Service Type</th><th class="p-4 border-b">Rate (Starting at)</th></tr>
+            </thead>
+            <tbody>
+              <tr><td class="p-4 border-b">Standard Diagnostic (8am - 5pm)</td><td class="p-4 border-b">$125.00</td></tr>
+              <tr><td class="p-4 border-b">Emergency/After-Hours Diagnostic</td><td class="p-4 border-b">$195.00</td></tr>
+              <tr><td class="p-4 border-b">Refrigerant Leak Repair & Charge</td><td class="p-4 border-b">Custom Quote</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. Installation / Custom Quote -->
+    <section class="section bg-slate-50 dark:bg-dark-bg">
+      <div class="max-w-3xl mx-auto text-center px-4" data-aos="zoom-in">
+        <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=1470&auto=format&fit=crop" alt="Installation Planning" class="rounded-2xl w-full h-64 object-cover mb-8">
+        <h2 class="text-3xl font-bold mb-4">New Installation Pricing</h2>
+        <p class="text-slate-600 dark:text-slate-400 mb-6">Every commercial space is different. We provide highly accurate, binding quotes for new installations after a complete site assessment.</p>
+        <a href="contact.html" class="btn-primary">Request Custom Quote</a>
+      </div>
+    </section>
+
+    <!-- 5. FAQ + CTA -->
+    <section class="section bg-slate-900 text-white text-center">
+      <div class="max-w-3xl mx-auto px-4">
+        <h2 class="text-3xl font-bold mb-6">Have Questions?</h2>
+        <p class="mb-8">Our team is ready to help you choose the right plan for your business.</p>
+        <a href="contact.html" class="btn-secondary border-white text-white hover:bg-white hover:text-slate-900">Contact Support</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="bg-slate-50 dark:bg-slate-950 text-slate-600 dark:text-slate-300 pt-16 pb-8 border-t border-slate-200 dark:border-slate-800 relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+        <div>
+          <a href="index.html" class="flex items-center gap-3 mb-6">
+            <div class="w-10 h-10 bg-primary rounded-lg flex items-center justify-center text-white shrink-0">
+            <i data-lucide="snowflake" class="w-6 h-6"></i>
+          </div>
+          <span class="font-heading font-bold text-2xl text-slate-900 dark:text-white leading-tight">
+            Apex
+          </span>
+          </a>
+          <p class="text-sm text-slate-600 dark:text-slate-400 mb-6">Industry-leading commercial refrigeration installation, service, and temperature monitoring solutions.</p>
+        </div>
+        <div>
+          <h4 class="text-slate-900 dark:text-white font-bold mb-6 uppercase text-sm tracking-wider">Quick Links</h4>
+          <ul class="space-y-3 text-sm">
+            <li><a href="about.html" class="hover:text-secondary transition-colors">About</a></li>
+            <li><a href="services.html" class="hover:text-secondary transition-colors">Services</a></li>
+            <li><a href="pricing.html" class="hover:text-secondary transition-colors">Plans</a></li>
+            <li><a href="industries.html" class="hover:text-secondary transition-colors">Industries</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="text-slate-900 dark:text-white font-bold mb-6 uppercase text-sm tracking-wider">Services</h4>
+          <ul class="space-y-3 text-sm">
+            <li><a href="services.html" class="hover:text-secondary transition-colors">Installation</a></li>
+            <li><a href="services.html" class="hover:text-secondary transition-colors">Emergency Repair</a></li>
+            <li><a href="services.html" class="hover:text-secondary transition-colors">Maintenance</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="text-slate-900 dark:text-white font-bold mb-6 uppercase text-sm tracking-wider">Contact</h4>
+          <ul class="space-y-4 text-sm">
+            <li class="flex items-center gap-3"><i data-lucide="phone" class="w-5 h-5 text-primary shrink-0"></i><a href="tel:1-800-555-0199" class="hover:text-secondary">(800) 555-0199</a></li>
+            <li class="flex items-center gap-3"><i data-lucide="mail" class="w-5 h-5 text-primary shrink-0"></i><a href="mailto:service@apexrefrigeration.com" class="hover:text-secondary">service@apexrefrigeration.com</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="border-t border-slate-200 dark:border-slate-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-slate-500">
+        <p>&copy; 2026 Apex Commercial Refrigeration. All rights reserved.</p>
+        
+      </div>
+    </div>
+    <!-- Back to Top -->
+    <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="absolute bottom-6 right-4 md:right-8 p-3 bg-slate-200 dark:bg-slate-800 text-slate-900 dark:text-white rounded-full hover:bg-primary hover:text-white hover:-translate-y-1 transition-all duration-300" aria-label="Back to top">
+      <i data-lucide="arrow-up" class="w-5 h-5"></i>
+    </button>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>lucide.createIcons(); AOS.init();</script>
+</body>
+</html>
+
+
