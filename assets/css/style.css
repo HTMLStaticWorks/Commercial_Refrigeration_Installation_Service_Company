@@ -4,8 +4,8 @@
   --color-primary: #0056b3;      /* Deep Refrigeration Blue */
   --color-primary-light: #3385ff;
   --color-primary-dark: #003d82;
-  --color-secondary: #00bcd4;    /* Cyan/Teal accent */
-  --color-accent: #ff5722;       /* Orange for emergency/alerts */
+  --color-secondary: #0056b3;    /* Cyan/Teal accent */
+  --color-accent: #0056b3;       /* Orange for emergency/alerts */
   
   --color-text-main: #1a1a24;
   --color-text-muted: #4a5568;
@@ -34,6 +34,7 @@ html, body {
   padding: 0;
   line-height: 1.6;
   scroll-behavior: smooth;
+  overflow-x: hidden;
   transition: background-color var(--transition-speed), color var(--transition-speed);
 }
 
