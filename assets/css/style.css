@@ -152,3 +152,46 @@ a:hover {
     margin: 0 auto;
   }
 }
+
+/* Social Link & Follow Us Hover Effects */
+.social-icon-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  text-decoration: none !important;
+}
+
+.social-icon-btn:hover {
+  background-color: var(--color-primary) !important;
+  color: #ffffff !important;
+  border-color: var(--color-primary) !important;
+  transform: translateY(-3px) !important;
+  box-shadow: 0 6px 16px -2px rgba(0, 86, 179, 0.45) !important;
+}
+
+[data-theme="dark"] .social-icon-btn:hover {
+  background-color: var(--color-primary) !important;
+  color: #ffffff !important;
+  border-color: var(--color-primary) !important;
+  box-shadow: 0 6px 16px -2px rgba(59, 130, 246, 0.5) !important;
+}
+
+.social-icon-btn svg {
+  transition: transform 0.25s ease, stroke 0.25s ease, fill 0.25s ease;
+}
+
+.social-icon-btn:hover svg {
+  color: #ffffff !important;
+  stroke: #ffffff;
+  transform: scale(1.12);
+}
+
+.social-icon-btn:hover svg[fill="currentColor"] {
+  fill: #ffffff !important;
+}
+
+.social-icon-btn:active {
+  transform: translateY(-1px) !important;
+}
+
