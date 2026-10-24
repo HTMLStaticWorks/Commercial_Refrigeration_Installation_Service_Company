@@ -4,8 +4,8 @@
   --color-primary: #0056b3;      /* Deep Refrigeration Blue */
   --color-primary-light: #3385ff;
   --color-primary-dark: #003d82;
-  --color-secondary: #0056b3;    /* Cyan/Teal accent */
-  --color-accent: #0056b3;       /* Orange for emergency/alerts */
+  --color-secondary: #0056b3;    /* Primary Brand Blue */
+  --color-accent: #dc2626;       /* Red for emergency/alerts */
   
   --color-text-main: #1a1a24;
   --color-text-muted: #4a5568;
@@ -79,6 +79,7 @@ a:hover {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  white-space: nowrap;
   transition: background-color var(--transition-speed), transform 0.2s;
   cursor: pointer;
   border: none;
@@ -98,6 +99,7 @@ a:hover {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  white-space: nowrap;
   transition: all var(--transition-speed);
   border: 2px solid var(--color-primary);
   cursor: pointer;
@@ -116,12 +118,13 @@ a:hover {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  white-space: nowrap;
   transition: all var(--transition-speed);
   border: none;
   cursor: pointer;
 }
 .btn-danger:hover {
-  background-color: #e64a19;
+  background-color: #b91c1c;
   transform: translateY(-2px);
 }
 
